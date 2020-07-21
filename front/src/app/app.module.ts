@@ -25,11 +25,11 @@ import { RequestInterceptor } from './core/auth/request.interceptor';
     ErrorModule
   ],
   providers: [
-      {
-          provide: HTTP_INTERCEPTORS,
-          useClass: RequestInterceptor,
-          multi: true
-      }
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: RequestInterceptor,
+        multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -9,7 +9,6 @@ import { Address } from './Address';
 
 const API_DATA = environment.API_DATA
 const API_LOCATION = 'https://servicodados.ibge.gov.br/api/v1/localidades/';
-const API_ZIP_CODE = 'https://viacep.com.br/ws/';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class AddressService {
         return this.http.get<City[]>(API_LOCATION + 'estados/' + uf + '/municipios');
     }
     fetchZipCode(zip: string) {
-        return this.http.get<ZipCode>(API_ZIP_CODE + zip + '/json')
+        return this.http.get<ZipCode>(API_DATA + '/zip/' + zip)
     }
     store(user_id: number, address: Address) {
         return this.http.post(API_DATA + '/user/' + user_id + '/address/store', address)

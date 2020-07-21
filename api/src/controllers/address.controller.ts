@@ -1,6 +1,7 @@
 import { Response, Request } from 'express';
 import { AddressDao } from './../dao/AddressDao'
 import { Address } from 'cluster';
+import axios from 'axios'
 
 export class AddressController {
     // LIST ALL
@@ -108,5 +109,14 @@ export class AddressController {
             return res.status(500).json({...result});
 
         return res.status(200).json({...result});
+    }
+
+    //  ZIP
+    static async zip(req: Request, res: Response) {
+        const { zip } = req.params;
+        axios.get(`https://viacep.com.br/ws/${zip}/json`)
+            .then(response => {
+                res.status(200).json(response.data)
+            }).catch(console.log)
     }
 }
