@@ -15,7 +15,7 @@ export class Token {
             if(error) 
                 return res.status(500).send({ auth: false, message: 'Token invalid.' });
             req['userId'] = decoded['id'];
-            console.log('user Id: ' + decoded['id']);
+            console.log('user token: ' + token);
             next(); 
         })
     }
