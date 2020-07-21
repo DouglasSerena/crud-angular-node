@@ -1,0 +1,29 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "crud user",
+  "main": "server.ts",
+  "author": "Douglas serena",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "start": "sucrase-node src/server.ts"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "sqlite3": "^5.0.0",
+    "sucrase": "^3.15.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/bcrypt": "^3.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.0.23",
+    "@types/sqlite3": "^3.1.6",
+    "typescript": "^3.9.7"
+  }
+}

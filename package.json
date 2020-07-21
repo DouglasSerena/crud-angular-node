@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "concurrently \"cd crud-basic && npm install\" \"cd api && npm install\"",
+    "start": "concurrently \"cd api && npm start\" \"cd crud-basic && npm start\""
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
