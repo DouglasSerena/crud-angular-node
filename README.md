@@ -1,9 +1,8 @@
 # crud-node-angular
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
-
-    - [Node.js](https://nodejs.org/en/)
-    - [angular](https://angular.io/)
+- [Node.js](https://nodejs.org/en/)
+- [angular](https://angular.io/)
 
 ## 🔖 Como Executar
 
