@@ -9,6 +9,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 #### Clonando o projeto
 ```sh
     git clone https://github.com/DouglasSerena/crud-angular-node.git
+    cd crud-angular-node
     npm install
 ```
 
@@ -17,6 +18,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ```sh
     npm run build
     npm run start
+    http://localhost:4200
 ```
 
 #### observações
