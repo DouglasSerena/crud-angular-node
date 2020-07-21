@@ -1,0 +1,33 @@
+<table class="table table-hover table-borderless border">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Profission</th>
+            <th scope="col">Sex</th>
+            <th scope="col">birth</th>
+            <th colspan="3" class="text-center">obtions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            class="cursor-pointer"
+            title="list address"
+            *ngFor="let user of users">
+            <td class="w-25 align-middle">{{user.name}}</td>
+            <td class="w-25 align-middle">{{user.email}}</td>
+            <td class="w-25 align-middle">{{user.profission}}</td>
+            <td class="w-25 align-middle">{{user.sex}}</td>
+            <td class="w-25 align-middle">{{user.birth}}</td>
+            <td class="text-center z1">
+                <div class="btn btn-info rounded-circle" [routerLink]="[user.id,'address']"><i class="fa fa fa-map"></i></div>
+            </td>
+            <td class="text-center">
+                <div class="btn btn-primary rounded-circle" (click)="emitUpdate(user.id)"><i class="fa fa fa-edit"></i></div>
+            </td>
+            <td class="text-center z1">
+                <div class="btn btn-danger rounded-circle" (click)="emitDelete(user.id)"><i class="fa fa fa-trash-o"></i></div>
+            </td>
+        </tr>
+    </tbody>
+</table>

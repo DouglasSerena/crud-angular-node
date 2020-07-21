@@ -1,0 +1,85 @@
+<h1 class="text-center">Form User</h1>
+
+<form #form="ngForm" [formGroup]="userForm" class="row" (submit)="save()">
+    <!-- NAME -->
+    <app-input class="col-md-3">
+        <div class="form-group">
+            <label>Name</label>
+            <input
+                [ngClass]="{
+                    'is-valid': userForm.get('name').valid,
+                    'is-invalid': userForm.get('name').invalid && (form.submitted || userForm.get('name').touched)}"
+                formControlName="name"
+                type="text"
+                placeholder="Name"
+                class="form-control"
+                autofocus>
+            <app-message
+                text="Name is required"
+                *ngIf="userForm.get('name').errors?.required && (form.submitted || userForm.get('name').touched)">
+            </app-message>
+            <app-message
+                text="maximun size 30"
+                *ngIf="userForm.get('name').errors?.maxlength">
+            </app-message>
+            <app-message
+                text="Name already taken"
+                *ngIf="userForm.get('name').errors?.isTaken">
+            </app-message>
+        </div>
+    </app-input>
+
+    <!-- EMAIL -->
+    <app-input class="col-md-5">
+        <div class="form-group">
+            <label>E-mail</label>
+            <input
+                [ngClass]="{
+                    'is-valid': userForm.get('email').valid,
+                    'is-invalid': userForm.get('email').invalid && (form.submitted || userForm.get('email').touched)}"
+                formControlName="email"
+                type="email"
+                placeholder="E-mail"
+                class="form-control">
+            <app-message
+                text="Email is required"
+                *ngIf="userForm.get('email').errors?.required && (form.submitted || userForm.get('email').touched)">
+            </app-message>
+            <app-message
+                text="Email is invalid"
+                *ngIf="userForm.get('email').errors?.email && (form.submitted || userForm.get('email').touched)">
+            </app-message>
+            <app-message
+                text="Email already taken"
+                *ngIf="userForm.get('email').errors?.isTaken">
+            </app-message>
+        </div>
+    </app-input>
+
+    <!-- PROFISSION -->
+    <app-input class="col-md-4">
+        <div class="form-group">
+            <label>Profission</label>
+            <input
+                [ngClass]="{
+                    'is-valid': userForm.get('profission').valid,
+                    'is-invalid': userForm.get('profission').invalid && (form.submitted || userForm.get('profission').touched)}"
+                formControlName="profission"
+                type="text"
+                placeholder="profission"
+                class="form-control">
+            <app-message
+                text="profission is required"
+                *ngIf="userForm.get('profission').errors?.required && (form.submitted || userForm.get('profission').touched)">
+            </app-message>
+            <app-message
+                text="maximun size 30"
+                *ngIf="userForm.get('profission').errors?.maxlength">
+            </app-message>
+        </div>
+    </app-input>
+
+    <button type="submit" class="btn btn-primary ml-3">Update</button>
+    <a [routerLink]="['/list']" class="btn btn-dark ml-3">cancel</a>
+
+</form>

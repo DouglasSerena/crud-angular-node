@@ -1,0 +1,16 @@
+<div class="container">
+    <h3 class="text-center text-muted mb-1">Addres of {{nameUser}}</h3>
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="text-muted">List of addresses</p>
+        <a [routerLink]="['/form',user_id,'address']" class="btn btn-primary mb-2"><i class="fa fa-plus-circle mr-2"></i>add</a>
+    </div>
+    <app-address-table
+    *ngIf="hasAddresses;else listEmpty"
+        (callDelete)="delete($event)"
+        (callUpdate)="update($event)"
+        [addresses]="addresses"></app-address-table>
+
+    <ng-template #listEmpty>
+        <h2 class="text-center text-muted">No Addresses</h2>
+    </ng-template>
+</div>

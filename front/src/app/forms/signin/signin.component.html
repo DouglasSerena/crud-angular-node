@@ -1,0 +1,35 @@
+<h1 class="text-center">Signin</h1>
+
+<div class="container">
+    <form [formGroup]="userForm" class="row flex-column align-items-center justify-content-center" (submit)="signin()">
+        <!-- EMAIL -->
+        <app-input class="col-lg-3 col-md-5 col-10">
+            <div class="form-group">
+                <input
+                    formControlName="email"
+                    type="email"
+                    placeholder="E-mail"
+                    class="form-control">
+            </div>
+        </app-input>
+
+        <!-- PASSWORD -->
+        <app-input class="col-lg-3 col-md-5 col-10">
+            <div class="form-group">
+                <input
+                    formControlName="password"
+                    type="password"
+                    placeholder="password"
+                    class="form-control">
+                    <app-message
+                        text="Email or password invalid"
+                        *ngIf="invalid"
+                        class="text-center">
+                    </app-message>
+            </div>
+        </app-input>
+
+        <button type="submit" class="btn btn-primary col-lg-3 col-md-5 col-10">signin</button>
+        <p class="text-muted text-center col-lg-3 col-md-5 col-10">user / senha: admin</p>
+    </form>
+</div>

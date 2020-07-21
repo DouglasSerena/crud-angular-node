@@ -1,0 +1,140 @@
+<h1 class="text-center">Form address</h1>
+
+<form #form="ngForm" [formGroup]="addressForm" class="row" (submit)="save()">
+    <!-- STREET -->
+    <app-input class="col-md-3">
+        <div class="form-group">
+            <label>Street</label>
+            <input
+                [ngClass]="{
+                    'is-valid': addressForm.get('street').valid,
+                    'is-invalid': addressForm.get('street').invalid && (form.submitted || addressForm.get('street').touched)}"
+                formControlName="street"
+                type="text"
+                placeholder="Street"
+                class="form-control"
+                autofocus>
+            <app-message
+                text="Street is required"
+                *ngIf="addressForm.get('street').errors?.required && (form.submitted || addressForm.get('street').touched)">
+            </app-message>
+            <app-message
+                text="maximun size 30"
+                *ngIf="addressForm.get('street').errors?.maxlength">
+            </app-message>
+        </div>
+    </app-input>
+
+    <!-- NEIGHBORHOOD -->
+    <app-input class="col-md-3">
+        <div class="form-group">
+            <label>Neighborhood</label>
+            <input
+                [ngClass]="{
+                    'is-valid': addressForm.get('neighborhood').valid,
+                    'is-invalid': addressForm.get('neighborhood').invalid && (form.submitted || addressForm.get('neighborhood').touched)}"
+                formControlName="neighborhood"
+                type="text"
+                placeholder="Neighborhood"
+                class="form-control">
+            <app-message
+                text="Neighborhood is required"
+                *ngIf="addressForm.get('neighborhood').errors?.required && (form.submitted || addressForm.get('neighborhood').touched)">
+            </app-message>
+            <app-message
+                text="maximun size 30"
+                *ngIf="addressForm.get('neighborhood').errors?.maxlength">
+            </app-message>
+        </div>
+    </app-input>
+
+    <!-- number -->
+    <app-input class="col-md-3">
+        <div class="form-group">
+            <label>Number</label>
+            <input
+                [ngClass]="{
+                    'is-valid': addressForm.get('number').valid,
+                    'is-invalid': addressForm.get('number').invalid && (form.submitted || addressForm.get('number').touched)}"
+                formControlName="number"
+                type="text"
+                placeholder="Number"
+                class="form-control">
+            <app-message
+                text="Number is required"
+                *ngIf="addressForm.get('number').errors?.required && (form.submitted || addressForm.get('number').touched)">
+            </app-message>
+            <app-message
+                text="maximun size 20"
+                *ngIf="addressForm.get('number').errors?.maxlength">
+            </app-message>
+        </div>
+    </app-input>
+
+    <!-- Zip code -->
+    <app-input class="col-md-3">
+        <div class="form-group">
+            <label>Zip Code</label>
+            <input
+                [ngClass]="{
+                    'is-invalid': addressForm.get('zip_code').invalid && (form.submitted || addressForm.get('zip_code').touched)}"
+                formControlName="zip_code"
+                type="text"
+                placeholder="Zip Code"
+                class="form-control"
+                (keyup)="debounce.next($event.target.value.replace('-',''))">
+            <app-message
+                text="Zip Code is valid"
+                *ngIf="addressForm.get('zip_code').errors?.minlength && (form.submitted || addressForm.get('zip_code').touched)">
+            </app-message>
+            <app-message
+                text="Zip Code is required"
+                *ngIf="addressForm.get('zip_code').errors?.required && (form.submitted || addressForm.get('zip_code').touched)">
+            </app-message>
+            <app-message
+                text="maximun size 9"
+                *ngIf="addressForm.get('zip_code').errors?.maxlength">
+            </app-message>
+        </div>
+    </app-input>
+
+    <!-- STATE -->
+    <app-input class="col-md-3" >
+        <select
+            formControlName="state"
+            class="form-control"
+            (change)="fetchCity($event.target.value)">
+            <option value="State" selected disabled>State</option>
+            <option *ngFor="let state of states" [value]="state.sigla">{{state.nome}}</option>
+        </select>
+    </app-input>
+
+     <!-- CITY -->
+    <app-input class="col-md-3" >
+        <select
+            formControlName="city"
+            class="form-control">
+            <option value="City" selected disabled>City</option>
+            <option *ngFor="let city of citys" [value]="city.nome">{{city.nome}}</option>
+        </select>
+    </app-input>
+
+    <!-- COMPLEMENT -->
+    <app-input class="col-md-6" >
+        <input
+            [ngClass]="{
+                'is-invalid': addressForm.get('complement').invalid && (form.submitted || addressForm.get('complement').touched)}"
+            formControlName="complement"
+            type="text"
+            placeholder="Complement"
+            class="form-control">
+            <app-message
+                text="maximun size 50"
+                *ngIf="addressForm.get('complement').errors?.maxlength">
+            </app-message>
+    </app-input>
+
+
+    <button type="submit" class="btn btn-primary ml-3">Submit</button>
+    <a [routerLink]="['/list',user_id,'address']" class="btn btn-dark ml-3">back</a>
+</form>
